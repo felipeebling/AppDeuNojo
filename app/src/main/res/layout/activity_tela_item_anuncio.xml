@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".telaItemAnuncio">
+    <TextView
+        android:id="@+id/tvDetalheCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CATEGORIA"
+        android:textStyle="bold"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetalheTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Título Completo do Produto"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvDetalheCategoria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvDetalhePreco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$ 150,00"
+        android:textSize="22sp"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvDetalheTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvDetalheData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anunciado em: 13/10/2026"
+        android:textSize="12sp"
+
+        app:layout_constraintTop_toBottomOf="@id/tvDetalhePreco"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/tvDetalheData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tvDetalheDescricaoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição:"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tvDetalheDescricao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descrição detalhada do item aqui..."
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvDetalheDescricaoLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btnretorna"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Salvar Anúncio"
+        app:layout_constraintTop_toBottomOf="@id/tvDetalheDescricao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
