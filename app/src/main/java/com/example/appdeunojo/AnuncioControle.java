@@ -40,24 +40,28 @@ public class AnuncioControle {
 
 
 
-    public List<Anuncio> consultaTodosAnuncio() {
-        List<Anuncio> listaAnuncios = new ArrayList<Anuncio>();
-        String consulta_anuncio ="SELECT categoria,titulo,preco,descricao,contato,situacao,dataSalva FROM anuncio Order by 2";
+
+
+
+    public List<String> consultaTodosAnuncioString() {
+        List<String> listaAnuncios = new ArrayList<String>();
+        String consulta_anuncio ="SELECT id,categoria,titulo,preco,descricao,contato,situacao,dataSalva FROM anuncio Order by 2";
         try{
             SQLiteDatabase bd=banco.getReadableDatabase();
             Cursor c=bd.rawQuery(consulta_anuncio,null);
             if (c.moveToFirst()) {
                 do {
+                    String linha = "";
+                    linha+=c.getString(0) ;
+                    linha+="\n " +    c.getString(1);
+                    linha+= "\n " + c.getString(2);
+                    linha+="\n " +    c.getString(3);
+                    linha+="\n " +c.getString(4);
+                    linha+="\n " + c.getString(5);
+                    linha+="\n " + c.getString(6);
+                    linha+="\n " + c.getString(7);
 
-                    String cat = c.getString(0);
-                    String titulo=  c.getString(1);
-                    String preco = c.getString(2);
-                    String des   =  c.getString(3);
-                    String cont  = c.getString(4);
-                    String situa = c.getString(5);
-                    String data  = c.getString(6);
-                    Anuncio anuncio = new Anuncio(cat,titulo,preco,des,cont,situa,data);
-                    listaAnuncios.add(anuncio);
+                    listaAnuncios.add(linha);
 
                 } while (c.moveToNext());
             }
@@ -65,31 +69,27 @@ public class AnuncioControle {
             bd.close();
             return listaAnuncios;
         }catch(Exception ex){
-            //  ("Erro (criação tabela)",ex.getMessage());
+            System.out.println(ex);
             return null;
         }
 
     }
 
 
-    public List<Anuncio> consultaEspecificoAnuncio(String condicao) {
-        List<Anuncio> listaAnuncios = new ArrayList<Anuncio>();
-        String consulta_anuncio ="SELECT categoria,titulo,preco,descricao,contato,situacao,dataSalva FROM anuncio Where categoria = '"+condicao+"' Order by 2";
+
+    public List<String> consultaTodos() {
+        List<String> listaAnuncios = new ArrayList<String>();
+        String consulta_anuncio ="SELECT id,titulo,preco FROM anuncio Order by 2";
         try{
             SQLiteDatabase bd=banco.getReadableDatabase();
             Cursor c=bd.rawQuery(consulta_anuncio,null);
             if (c.moveToFirst()) {
                 do {
-
-                    String cat = c.getString(0);
-                    String titulo=  c.getString(1);
-                    String preco = c.getString(2);
-                    String des   =  c.getString(3);
-                    String cont  = c.getString(4);
-                    String situa = c.getString(5);
-                    String data  = c.getString(6);
-                    Anuncio anuncio = new Anuncio(cat,titulo,preco,des,cont,situa,data);
-                    listaAnuncios.add(anuncio);
+                    String linha = "";
+                    linha+= c.getString(0) ;
+                    linha+="\n " +    c.getString(1);
+                    linha+= "\n " + c.getString(2);
+                    listaAnuncios.add(linha);
 
                 } while (c.moveToNext());
             }
@@ -97,7 +97,66 @@ public class AnuncioControle {
             bd.close();
             return listaAnuncios;
         }catch(Exception ex){
-            //  ("Erro (criação tabela)",ex.getMessage());
+            System.out.println(ex);
+            return null;
+        }
+
+    }
+
+
+    public String consultaPorId(String cod) {
+        String prod = "";
+        String consulta = "Select * from anuncio where id =  '" + cod + "';";
+        try {
+            SQLiteDatabase bd = banco.getReadableDatabase();
+            Cursor c = bd.rawQuery(consulta, null);
+            if (c.moveToFirst()) {
+                do {
+                    prod+= c.getString(0) ;
+                    prod+="\n" + c.getString(1);
+                    prod+="\n" + c.getString(2);
+                    prod+="\n" + c.getString(3);
+                    prod+="\n" + c.getString(4);
+                    prod+="\n" + c.getString(5);
+                    prod+="\n" + c.getString(6);
+                    prod+="\n" + c.getString(7);
+
+                } while (c.moveToNext());
+            }
+            c.close();
+            bd.close();
+            return prod;
+        } catch (Exception ex) {
+            System.out.println(ex);
+
+        }
+        return null;
+    }
+
+
+    public List<String> consultaEspecificoAnuncio(String condicao) {
+        List<String> listaAnuncios = new ArrayList<String>();
+        String consulta_anuncio ="SELECT id,titulo,preco FROM anuncio Where categoria = '"+condicao+"' Order by 2";
+        try{
+            SQLiteDatabase bd=banco.getReadableDatabase();
+            Cursor c=bd.rawQuery(consulta_anuncio,null);
+            if (c.moveToFirst()) {
+                do {
+
+                    String linha = "";
+                    linha+=c.getString(0);
+                    linha+="\n" +c.getString(1);
+                    linha+="\n" +c.getString(2);
+                    listaAnuncios.add(linha);
+
+                } while (c.moveToNext());
+            }
+            c.close();
+            bd.close();
+            return listaAnuncios;
+        }catch(Exception ex){
+            System.out.println(ex);
+
             return null;
         }
 

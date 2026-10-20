@@ -17,26 +17,36 @@
         android:text="Cadastre-se usuario!" />
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Digite seu Usuario:" />
+
     <EditText
         android:id="@+id/edUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
-        android:text="digite o usuario:" />
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Digite sua Senha:" />
 
     <EditText
         android:id="@+id/edSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
-        android:text="digite a senha:" />
+        android:inputType="text" />
 
 
     <Button
         android:id="@+id/btnCadastrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Cadastrar" />
 </LinearLayout>

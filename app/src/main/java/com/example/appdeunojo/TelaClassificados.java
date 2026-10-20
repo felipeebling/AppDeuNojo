@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class TelaClassificados extends AppCompatActivity {
     private Spinner spFiltroCategoria;
-    private List<Anuncio> lista = new ArrayList<>();
+    private List<String> lista = new ArrayList<>();
     ListView listView;
     Button btVoltar,btVerAnuncio;
 
@@ -38,10 +39,14 @@ public class TelaClassificados extends AppCompatActivity {
         btVerAnuncio = findViewById(R.id.btnVerAnuncio);
 
         spFiltroCategoria = findViewById(R.id.spFiltroCategoria);
+
         AnuncioControle ac = new AnuncioControle(this);
         listView = findViewById(R.id.lsttodos);
-        ArrayAdapter<Anuncio> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
-        listView.setAdapter(adapter);
+
+
+
+
+
 
         String[] categorias = {"Todas", "Eletrônicos", "Veículos", "Imóveis", "Moda", "Outros"};
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categorias);
@@ -63,9 +68,10 @@ public class TelaClassificados extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 0=Todas, 1 = eletronicos, 2 = veiculos,3 = imoveis, 4 = moda, 5 = outros
                 String categoria = parent.getItemAtPosition(position).toString();
+
                 switch (position){
                     case 0:
-                       lista = ac.consultaTodosAnuncio();
+                       lista = ac. consultaTodos();
                         break;
                     case 1:
                         lista = ac.consultaEspecificoAnuncio("Eletrônicos");
@@ -83,12 +89,27 @@ public class TelaClassificados extends AppCompatActivity {
                         lista = ac.consultaEspecificoAnuncio("Outros");
                         break;
                 }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(TelaClassificados.this, android.R.layout.simple_list_item_1, lista);
 
+                listView.setAdapter(adapter);
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(TelaClassificados.this, telaItemAnuncio.class);
+
+                String valor = parent.getItemAtPosition(position).toString();
+                intent.putExtra("idProduto",valor);
+                startActivity(intent);
+
+            }
         });
 
     }
