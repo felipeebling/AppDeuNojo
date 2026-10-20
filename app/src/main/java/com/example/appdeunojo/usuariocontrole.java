@@ -16,14 +16,16 @@ public class usuariocontrole {
         this.banco = new conectadb(contexto);
     }
 
-    public void insere_usuario(usuario usr) {
+    public boolean insere_usuario(usuario usr) {
         String INSERE_USUARIO = "INSERT INTO usuario (login,senha) values ('" + usr.getLogin() + "','" + usr.getSenha() + "')";
         try {
             SQLiteDatabase db = banco.getWritableDatabase();
             db.execSQL(INSERE_USUARIO);
             db.close();
+            return true;
         } catch (Exception ex) {
             //("Erro (criação tabela)",ex.getMessage());
+            return false;
         }
 
 

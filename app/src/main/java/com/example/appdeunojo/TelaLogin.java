@@ -66,6 +66,10 @@ public class TelaLogin extends AppCompatActivity {
 
     private void realizarCadastro() {
         Toast.makeText(this, "Redirecionando para cadastro...", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, TelaCadastro.class);
+        startActivity(intent);
+        finish();
         // Lógica de cadastro pode ser acoplada aqui ou abrir uma nova tela
     }
 

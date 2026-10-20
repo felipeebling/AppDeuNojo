@@ -1,5 +1,6 @@
 package com.example.appdeunojo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -67,7 +68,19 @@ public class TelaAnuncie extends AppCompatActivity {
         String dataAtual = sdf.format(new Date());
 
 
-        Toast.makeText(this, "Anúncio salvo com sucesso!", Toast.LENGTH_SHORT).show();
-        finish(); // Fecha a tela e retorna à anterior
+        Anuncio anuncio = new Anuncio(categoria, titulo, preco, descricao, contato, situacao, dataAtual);
+        AnuncioControle c = new AnuncioControle(this);
+
+        if (c.insereAnuncio(anuncio)){
+            Toast.makeText(this, "Anúncio salvo com sucesso!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+
+        }else{
+            Toast.makeText(this, "Erro ao salvar anúncio", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 }

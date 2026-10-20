@@ -6,6 +6,11 @@ public class usuario {
     private String login;
     private String senha;
 
+    public usuario (String nome, String senh){
+        this.login = nome;
+        this.senha = senh;
+    }
+
     public int getId() {
         return id;
     }
