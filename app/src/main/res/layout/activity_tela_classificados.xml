@@ -33,44 +33,30 @@
 
     <ListView
         android:id="@+id/lsttodos"
-        android:layout_width="391dp"
-        android:layout_height="526dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
-    <Button
-        android:id="@+id/btnretornaPrincipal"
-        android:layout_width="95dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Voltar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lsttodos" />
+        <Button
+            android:id="@+id/btnretornaPrincipal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Voltar" />
 
         <Button
             android:id="@+id/btnVerAnuncio"
-            android:layout_width="95dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:text="Ver Anuncio"
-            app:iconTint="#FF0000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lsttodos"
-            app:rippleColor="@color/black" />
-
+            android:layout_marginStart="8dp"
+            android:text="Ver Anuncio" />
 
     </LinearLayout>
 
